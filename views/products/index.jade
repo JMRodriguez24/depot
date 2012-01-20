@@ -1,0 +1,23 @@
+h1 Listing products
+if (count)
+  table
+    tr
+      th Title
+      th Description
+      th Image url
+      th Price
+    #products
+    each product in products
+      tr
+        td= product.title
+        td= product.description
+        td= product.image_url
+        td= product.price
+  table
+  br
+else
+  p 
+    | It looks like you have no products!
+  p
+    | Click
+a(href='/products/add') New product

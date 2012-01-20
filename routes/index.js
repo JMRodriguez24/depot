@@ -1,8 +1,12 @@
 
 /*
- * GET home page.
+ * routes for the home page.
  */
 
-exports.index = function(req, res){
-    res.render('index', { title: 'Express' });
+module.exports = function(app){
+    app.get('/', function (req, res) {        
+        res.render('index', { title: 'depot' });
+    });
+
+    require('./products')(app);
 };

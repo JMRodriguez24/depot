@@ -3,8 +3,9 @@
  * Module dependencies.
  */
 
-var express = require('express'),
-    routes = require('./routes');
+var express = require('express');
+require('express-namespace');
+var mongoose = require('mongoose');
 
 var app = module.exports = express.createServer();
 
@@ -22,15 +23,17 @@ app.configure(function(){
 
 app.configure('development', function(){
     app.use(express.errorHandler({ dumpExceptions: true, showStack: true })); 
+    app.set('connectionString', 'mongodb://localhost:27017/depot');
 });
 
 app.configure('production', function(){
     app.use(express.errorHandler()); 
+    app.set(process.env.MONGOHQ_URL);
 });
 
 // Routes
-
-app.get('/', routes.index);
+require('./routes')(app);
 
 app.listen(3000);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
+
