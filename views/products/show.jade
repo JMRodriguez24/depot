@@ -1,0 +1,17 @@
+h1 Product Details
+p
+  b Title:
+  #{product.title}
+p
+  b Description:
+  #{product.description}
+p
+  b Image url:
+  #{product.image_url}
+p
+  b Price:
+  #{product.price}
+
+a(href='/products/#{product._id}/edit') Edit
+br
+a(href="/products") Back

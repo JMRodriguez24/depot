@@ -3,8 +3,7 @@
  *  routes for products
  */         
 
-module.exports = function (app) {
-    var models = require('../models');
+module.exports = function (app, models) {
     var Product = new models.Product(app);
 
     // get a list of products
@@ -47,14 +46,22 @@ module.exports = function (app) {
             });    
         });
 
-        // get a specific post
+        // get a specific product
         app.get('/', function (req, res) {
-            res.render('products', req.product);            
+            res.render('products/show', { product: req.product });            
         });
 
-        // delete a specific post
+        // show a specific product
+        app.get('/edit', function (req, res) {
+            console.dir(req.product);
+            res.render('products/edit', { product: req.product });
+        });
+
+        // delete a specific product
         app.del('/', function (req, res) {
-            res.redirect('/products/');
+            Product.remove(req.product._id, function  (err, product) {
+                res.redirect('/products/');
+            });
         });
     });
 };

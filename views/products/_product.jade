@@ -1,0 +1,11 @@
+tr
+  td
+    a(href='/products/#{product._id}')= product.title
+  td= product.description
+  td= product.image_url
+  td= product.price
+  td
+    a(href='/products/#{product._id}/edit') Edit
+  td
+    a(href='/products/#{product._id}', data-confirm='Are you sure?',
+    data-method='DELETE', rel='nofollow') Delete

@@ -59,4 +59,10 @@ ProductProvider.prototype.save = function(body, callback) {
     });
 };
 
+ProductProvider.prototype.remove = function(id, callback) {
+    product.remove({ _id: id }, function (err,  count) {
+       callback(err, count);  
+    }); 
+};
+
 exports.ProductProvider = ProductProvider;

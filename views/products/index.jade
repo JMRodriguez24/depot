@@ -6,13 +6,7 @@ if (count)
       th Description
       th Image url
       th Price
-    #products
-    each product in products
-      tr
-        td= product.title
-        td= product.description
-        td= product.image_url
-        td= product.price
+    != partial('product', products);
   table
   br
 else
