@@ -6,27 +6,31 @@
 var express = require('express');
 require('express-namespace');
 var mongoose = require('mongoose');
+var messages = require('./lib/alert');
+var stylus = require('stylus');
 
 var app = module.exports = express.createServer();
 
 // Configuration
-
-app.configure(function(){
+app.configure(function () {
     app.set('views', __dirname + '/views');
     app.set('view engine', 'jade');
-    app.use(express.bodyParser());
+    app.use(express.bodyParser());      
+    app.use(express.cookieParser());
+    app.use(express.session({ secret: "keyboard cat" }));
     app.use(express.methodOverride());
-    app.use(require('stylus').middleware({ src: __dirname + '/public' }));
+    app.use(stylus.middleware({ src: __dirname + '/public'}));
     app.use(app.router);
-    app.use(express.static(__dirname + '/public'));
+    app.use(express['static'](__dirname + '/public'));
+    app.dynamicHelpers({ messages: messages });
 });
 
-app.configure('development', function(){
+app.configure('development', function () {
     app.use(express.errorHandler({ dumpExceptions: true, showStack: true })); 
     app.set('connectionString', 'mongodb://localhost:27017/depot');
 });
 
-app.configure('production', function(){
+app.configure('production', function () { 
     app.use(express.errorHandler()); 
     app.set(process.env.MONGOHQ_URL);
 });

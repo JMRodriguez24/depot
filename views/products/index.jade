@@ -1,14 +1,12 @@
-h1 Listing products
+.page-header
+  h1 Products 
+    small The list of product available
+
+!=messages()
+
 if (count)
-  table
-    tr
-      th Title
-      th Description
-      th Image url
-      th Price
-    != partial('product', products);
-  table
-  br
+  ul.thumbnails
+    != partial('product', products);  
 else
   p 
     | It looks like you have no products!

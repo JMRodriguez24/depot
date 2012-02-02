@@ -4,11 +4,32 @@
  */         
 
 module.exports = function (app, models) {
-    var Product = new models.Product(app);
+    var product = models.product(app);
+    
+    function handleValidationErrors(err, req, res, redirect, infoMsg) {
+        if (err) {
+            var errors = err.errors;
+            var error;
+
+            for (error in errors)
+            {
+                if (errors.hasOwnProperty(error))
+                {
+                    req.flash('error', errors[error].message);
+                }
+            }
+
+            res.redirect(redirect);
+        }
+        else {
+            req.flash('info', infoMsg);
+            res.redirect('/products/');
+        }
+    }
 
     // get a list of products
     app.get('/products/', function (req, res) {
-        Product.findAll( function  (err, products) {
+        product.findAll(function  (err, products) {
             res.render('products', { count: products.length, products: products });
         });
     });
@@ -20,21 +41,19 @@ module.exports = function (app, models) {
 
     // Save a product
     app.post('/products', function  (req, res) {
-        Product.save(req.body.product, function  (err) {
-            if(!err) {
-                res.redirect('/products/');
-            }
-
+        product.save(req.body.product, function  (err) {
+            var body = req.product;
+            handleValidationErrors(err, req, res, '/products/add/', body.title + ' saved successfully');
         }); 
     });
 
     app.namespace('/products/:id', function () {
- 
+
         // Route param precondition to load a product
         app.param('id', function (req, res, next, id) {
-            Product.findById(id, function (err, product) {
+            product.findById(id, function (err, product) {
                 if (err) {
-                   return next(err);
+                    return next(err);
                 }
 
                 if (!product) {
@@ -51,16 +70,23 @@ module.exports = function (app, models) {
             res.render('products/show', { product: req.product });            
         });
 
-        // show a specific product
+        // show a form to modify a product
         app.get('/edit', function (req, res) {
-            console.dir(req.product);
             res.render('products/edit', { product: req.product });
+        });
+
+        // update a product
+        app.post('/edit', function (req, res) {
+            product.update(req.product, req.body.product, function (err) {
+                var body = req.product;
+                handleValidationErrors(err, req, res, '/products/' + body._id + '/edit', 'Updated ' + body.title);
+            });
         });
 
         // delete a specific product
         app.del('/', function (req, res) {
-            Product.remove(req.product._id, function  (err, product) {
-                res.redirect('/products/');
+            product.remove(req.product._id, function  (err, count) {
+                handleValidationErrors(err, req, res, '/products/', req.product.title + ' was deleted');     
             });
         });
     });

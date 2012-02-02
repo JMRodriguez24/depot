@@ -1,3 +1,3 @@
 module.exports = {
-    Product: require('./product').ProductProvider
+    product: require('./product')
 };

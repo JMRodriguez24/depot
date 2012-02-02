@@ -1,2 +1,7 @@
-h1= product.title
-!= partial('form', { locals: { product: product } }); 
+.page-header
+  h1 #{product.title} 
+    small Modify this product
+
+.row
+  .span6
+    != partial('form', { locals: { product: product, action: '/products/' + product._id + '/edit/' } }); 

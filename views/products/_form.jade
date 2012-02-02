@@ -1,21 +1,25 @@
-form(method="post", action="/products")
- fieldset
-   legend Product info
-   p
-     label(for="product[title]") Title:
-     input(type="text", name="product[title]", value=product.title)
-   p
-     label(for="product[description]") Description:
-     input(type="text", name="product[description]", value=product.title)
- fieldset
-   legend Product details
-   p
-     label(for="product[image_url]") Image URL:
-     input(type="text", name="product[image_url]", value=product.image_url)
-   p
-     label(for="product[price]") Price:
-     input(type="text", name="product[price]", value=product.price)
- p
-   input(type="submit", value="save")
+!=messages()
+
+form.form-stacked(method="post", action=action)
+  .clearfix
+    label(for="product[title]") Title:
+    .input
+      input(type="text", name="product[title]", value=product.title)
+  .clearfix
+    label(for="product[description]") Description:
+    .input
+      textarea(name="product[description]", rows=3)=product.description
+  .clearfix
+    label(for="product[image_url]") Image URL:
+    .input
+      input(type="text", name="product[image_url]", value=product.image_url)
+  .clearfix
+    label(for="product[price]") Price:
+    .input
+      input(type="text", name="product[price]", value=product.price)
+  .form-actions
+    button(type="submit", class="btn-primary") Save changes
+    | 
+    button(type="reset", class="btn") Cancel
 
 a(href="/products") Back
