@@ -4,6 +4,8 @@
     "private": true,
     "dependencies": {
             "express": "2.5.5",
-            "jade": ">= 0.0.1"
+            "express-namespace": ">=0.0.4",
+            "jade": ">= 0.20.0",
+            "mongoose": ">= 2.4.10"
         }
 }

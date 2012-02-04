@@ -1,20 +1,16 @@
-h1 Product Details
+.page-header
+  h1 Product Details 
+    small Details about 
+        strong=product.title
 
 !=messages()
 
-p
-  b Title:
-  #{product.title}
-p
-  b Description:
-  #{product.description}
-p
-  b Image url:
-  #{product.image_url}
-p
-  b Price:
-  #{product.price}
-
-a(href='/products/#{product._id}/edit') Edit
-br
-a(href="/products") Back
+.row
+  .thumbnail.span-one-third
+    img(src="/images/#{product.image_url}")
+  .span-one-third
+    h2=product.title
+    p=product.description
+    
+.btn-toolbar
+  a.btn(href="/products") Back

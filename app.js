@@ -8,6 +8,7 @@ require('express-namespace');
 var mongoose = require('mongoose');
 var messages = require('./lib/alert');
 var stylus = require('stylus');
+var publicDir = __dirname + '/public';
 
 var app = module.exports = express.createServer();
 
@@ -19,9 +20,9 @@ app.configure(function () {
     app.use(express.cookieParser());
     app.use(express.session({ secret: "keyboard cat" }));
     app.use(express.methodOverride());
-    app.use(stylus.middleware({ src: __dirname + '/public'}));
     app.use(app.router);
-    app.use(express['static'](__dirname + '/public'));
+    app.use(express['static'](publicDir));
+    app.use(stylus.middleware({ src: publicDir }));
     app.dynamicHelpers({ messages: messages });
 });
 
