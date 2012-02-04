@@ -5,8 +5,8 @@ li.span3
     .caption
       h5=product.title
       p=product.description
-      p=product.price
-      p
+      h5=numbers.formatMoney(product.price)
+      .btn-toolbar
         a.btn(href='/products/#{product._id}/edit') Edit
         | 
         a.btn(href='/products/#{product._id}', data-confirm='Are you sure?', data-method='DELETE', rel='nofollow') Delete
