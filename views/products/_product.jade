@@ -5,7 +5,7 @@ li.span3
     .caption
       h5=product.title
       p=product.description
-      h5=numbers.formatMoney(product.price)
+      h5=numbers.formatMoney(product.price, __i('$'))
       .btn-toolbar
         a.btn(href='/products/#{product._id}/edit') Edit
         | 

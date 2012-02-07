@@ -7,7 +7,7 @@ var express = require('express');
 require('express-namespace');
 var mongoose = require('mongoose');
 var helpers = require('./helpers');
-var stylus = require('stylus');
+var i18n = require('i18n');
 var publicDir = __dirname + '/public';
 
 var app = module.exports = express.createServer();
@@ -22,10 +22,12 @@ app.configure(function () {
     app.use(express.methodOverride());
     app.use(app.router);
     app.use(express['static'](publicDir));
-    app.use(stylus.middleware({ src: publicDir }));
+    app.use(i18n.init);
     app.dynamicHelpers({ messages: helpers.messages });
     app.helpers({
-        numbers: helpers.numbers
+        numbers: helpers.numbers,
+        __i: i18n.__,
+        __n: i18n.__n
     });
 });
 

@@ -42,8 +42,8 @@ module.exports = function (app, models) {
     // Save a product
     app.post('/products', function  (req, res) {
         product.save(req.body.product, function  (err) {
-            var body = req.product;
-            handleValidationErrors(err, req, res, '/products/add/', body.title + ' saved successfully');
+            var product = req.body.product;
+            handleValidationErrors(err, req, res, '/products/add/', product.title + ' saved successfully');
         }); 
     });
 

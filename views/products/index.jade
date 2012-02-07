@@ -1,6 +1,7 @@
 .page-header
-  h1 Products 
-    small The list of product available
+  h1=__i('Products')
+    | 
+    small=__i('The list of products available')
 
 !=messages()
 
@@ -8,8 +9,5 @@ if (count)
   ul.thumbnails
     != partial('product', products);  
 else
-  p 
-    | It looks like you have no products!
-  p
-    | Click
-a(href='/products/add') New product
+  p=__i('It looks like you have no products!')
+a(href='/products/add')=__i('New product')

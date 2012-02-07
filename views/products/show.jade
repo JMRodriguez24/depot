@@ -1,7 +1,9 @@
 .page-header
-  h1 Product Details 
-    small Details about 
-        strong=product.title
+  h1=__i('Product Details') 
+    | 
+    small=__i('Details about')
+      | 
+      strong #{product.title}
 
 !=messages()
 
@@ -11,6 +13,6 @@
   .span-one-third
     h2=product.title
     p=product.description
-    h5=numbers.formatMoney(product.price) 
+    h5=numbers.formatMoney(product.price, __i('$')) 
 .btn-toolbar
-  a.btn(href="/products") Back
+  a.btn(href="/products")=__i('Back')
