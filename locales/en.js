@@ -11,5 +11,14 @@
 	"Product Details": "Product Details",
 	"Details about": "Details about",
 	"Back": "Back",
-	"It looks like you have no products!": "It looks like you have no products!"
+	"It looks like you have no products!": "It looks like you have no products!",
+	"Catalog": "Catalog",
+	"Add products to your cart": "Add products to your cart",
+	"Depot": "Depot",
+	"Pragprog Books Online Store": "Pragprog Books Online Store",
+	"Sidebar": "Sidebar",
+	"Home": "Home",
+	"Questions": "Questions",
+	"News": "News",
+	"Add to cart": "Add to cart"
 }

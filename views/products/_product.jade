@@ -2,14 +2,12 @@ li.span3
   .thumbnail
     a(href='/products/#{product._id}/',)
       img(src="/images/#{product.image_url}")
+    .btn-toolbar
+    a.btn(href='/products/#{product._id}/edit') Edit
+    | 
+    a.btn(href='/products/#{product._id}', data-confirm='Are you sure?', data-method='DELETE', rel='nofollow') Delete
     .caption
       h5=product.title
       p=product.description
       h5=numbers.formatMoney(product.price, __i('$'))
-      .btn-toolbar
-        a.btn(href='/products/#{product._id}/edit') Edit
-        | 
-        a.btn(href='/products/#{product._id}', data-confirm='Are you sure?', data-method='DELETE', rel='nofollow') Delete
  
-
-

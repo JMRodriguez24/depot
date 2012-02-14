@@ -1,0 +1,9 @@
+.row.store-grid
+  .span3
+    img(src="/images/#{product.image_url}")
+    .cart-row
+      a.btn(href="#")=__i("Add to cart")
+      h5.price=numbers.formatMoney(product.price, __i('$'))
+  .span6
+    h3=product.title
+    p=product.description

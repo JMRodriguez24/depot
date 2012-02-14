@@ -30,7 +30,7 @@ module.exports = function (app, models) {
     // get a list of products
     app.get('/products/', function (req, res) {
         product.findAll(function  (err, products) {
-            res.render('products', { count: products.length, products: products });
+            res.render('products', { products: products });
         });
     });
 

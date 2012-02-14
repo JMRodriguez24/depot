@@ -1,0 +1,8 @@
+.page-header
+  h1=__i('Catalog')
+    | 
+    small=__i('Add products to your cart')
+
+!=messages()
+
+  != partial('storeItem', { collection: products, as: 'product' });  

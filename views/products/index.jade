@@ -5,9 +5,9 @@
 
 !=messages()
 
-if (count)
-  ul.thumbnails
-    != partial('product', products);  
+if (products.length)
+  ul.thumbnails.product-listing
+    != partial('product', products);
 else
   p=__i('It looks like you have no products!')
 a(href='/products/add')=__i('New product')

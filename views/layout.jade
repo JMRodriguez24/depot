@@ -2,4 +2,23 @@
 html
   include includes/head
 body
-  .container!= body
+  .navbar.navbar-fixed-top
+    .navbar-inner
+      .container-fluid
+        a.brand=__i('Depot')
+  .container-fluid
+    .row-fluid
+      .span3
+        .well.sidebar-nav
+          ul.nav.nav-list
+            li.nav-header=__i('Sidebar') 
+            li
+              a=__i('Home')
+            li
+              a=__i('Questions')
+            li
+              a=__i('News')
+      .span9!=body
+  script(src='/vendor/jquery-1.7.1.min.js')
+  script(src='/javascripts/ui.js')
+  script(src='/javascripts/common.js') 
