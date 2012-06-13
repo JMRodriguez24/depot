@@ -32,6 +32,16 @@ var exports = module.exports = function (app) {
                 }
                 else {
                     callback(err, null);
+                }                
+            });
+        },
+        findByIds: function (ids, callback) {
+            product.where('_id')['in'](ids).run(function (err, products) {
+                if (!err) {
+                    callback(null, products);
+                }
+                else {
+                    callback(err, null);    
                 }
             });
         },

@@ -20,5 +20,10 @@
 	"Home": "Home",
 	"Questions": "Questions",
 	"News": "News",
-	"Add to cart": "Add to cart"
+	"Add to cart": "Add to cart",
+	"Store": "Store",
+	"Cart": "Cart",
+	"This are the products in your cart": "This are the products in your cart",
+	"Are you sure?": "Are you sure?",
+	"Confirmation Dialog": "Confirmation Dialog"
 }

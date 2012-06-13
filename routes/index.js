@@ -13,4 +13,5 @@ module.exports = function (app) {
 
     require('./products')(app, models);
     require('./store')(app, models);
+    require('./cart')(app, models);
 };

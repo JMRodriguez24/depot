@@ -11,6 +11,8 @@ var i18n = require('i18n');
 var publicDir = __dirname + '/public';
 
 var app = module.exports = express.createServer();
+app.__i = i18n.__;
+app.__n = i18n.__n;
 
 // Configuration
 app.configure(function () {
@@ -44,6 +46,6 @@ app.configure('production', function () {
 // Routes
 require('./routes')(app);
 
-app.listen(3000);
+app.listen(process.env.port || 3000);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
 

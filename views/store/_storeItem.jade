@@ -1,8 +1,8 @@
 .row.store-grid
   .span3
     img(src="/images/#{product.image_url}")
-    .cart-row
-      a.btn(href="#")=__i("Add to cart")
+    .store-cart-row
+      a.btn(href="add_to_cart/#{product._id}", data-method='POST', rel='nofollow')=__i("Add to cart")
       h5.price=numbers.formatMoney(product.price, __i('$'))
   .span6
     h3=product.title

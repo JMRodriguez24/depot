@@ -1,0 +1,12 @@
+.page-header
+  h1=__i('Cart')
+    | 
+    small=__i('This are the products in your cart')
+
+!=messages()
+
+if (items && items.length)
+  ul
+    != partial('item', items);
+else
+  p=__i('It looks like you have no products!')

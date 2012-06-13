@@ -3,10 +3,10 @@
     "version": "0.0.1",
     "private": true,
     "dependencies": {
-            "express": "2.5.5",
-            "express-namespace": ">=0.0.4",
-            "jade": ">= 0.20.0",
-            "mongoose": ">= 2.4.10",
-            "i18n": ">= 0.3.0"
+            "express": "latest",
+            "express-namespace": "latest",
+            "jade": "latest",
+            "mongoose": "latest",
+            "i18n": "latest"
         }
 }
