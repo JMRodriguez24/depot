@@ -9,6 +9,7 @@ var mongoose = require('mongoose');
 var helpers = require('./helpers');
 var i18n = require('i18n');
 var publicDir = __dirname + '/public';
+var port;
 
 var app = module.exports = express.createServer();
 app.__i = i18n.__;
@@ -36,16 +37,18 @@ app.configure(function () {
 app.configure('development', function () {
     app.use(express.errorHandler({ dumpExceptions: true, showStack: true })); 
     app.set('connectionString', 'mongodb://localhost:27017/depot');
+    port = 3000;
 });
 
 app.configure('production', function () { 
     app.use(express.errorHandler()); 
-    app.set(process.env.MONGOHQ_URL);
+    app.set(process.env.MONGOLAB_URI);
+    port = process.env.PORT;
 });
 
 // Routes
 require('./routes')(app);
 
-app.listen(process.env.port || 3000);
+app.listen(port || 3000);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
 
