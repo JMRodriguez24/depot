@@ -6,7 +6,6 @@
 var express = require('express');
 var RedisStore = require('connect-redis')(express);
 require('express-namespace');
-var mongoose = require('mongoose');
 var helpers = require('./helpers');
 var i18n = require('i18n');
 var publicDir = __dirname + '/public';
@@ -59,7 +58,7 @@ app.configure('development', function () {
 
 app.configure('production', function () { 
     app.use(express.errorHandler()); 
-    app.set(process.env.MONGOLAB_URI);
+    app.set('connectionString', process.env.MONGOLAB_URI);
     port = process.env.PORT;    
 });
 
