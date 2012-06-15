@@ -12,9 +12,8 @@ body {
     margin-bottom: 5px;
 }
 .store-grid .price {
-    display: inline;
-    position: absolute;
-    right: 0;
+    display: inline;    
+    margin: 5px;
 }
 .cart-row {
     position: relative;
