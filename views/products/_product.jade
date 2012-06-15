@@ -1,7 +1,7 @@
 li.span3
   .thumbnail
     a(href='/products/#{product._id}/')
-      img(src="/images/#{product.image_url}")
+      img(src=product.image_url)
     .btn-toolbar
     a.btn(href='/products/#{product._id}/edit') Edit
     | 

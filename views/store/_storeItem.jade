@@ -1,6 +1,6 @@
 .row-fluid.store-grid
   .span3
-    img(src="/images/#{product.image_url}")
+    img(src=product.image_url)
     .store-cart-row
       a.btn(href="add_to_cart/#{product._id}", data-method='POST', rel='nofollow')=__i("Add to cart")
       h5.price=numbers.formatMoney(product.price, __i('$'))
