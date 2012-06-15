@@ -25,5 +25,8 @@
 	"Cart": "Cart",
 	"This are the products in your cart": "This are the products in your cart",
 	"Are you sure?": "Are you sure?",
-	"Confirmation Dialog": "Confirmation Dialog"
+	"Confirmation Dialog": "Confirmation Dialog",
+	"Quantity": "Quantity",
+	"Title": "Title",
+	"Price": "Price"
 }

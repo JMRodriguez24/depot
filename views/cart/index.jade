@@ -6,7 +6,16 @@
 !=messages()
 
 if (items && items.length)
-  ul
-    != partial('item', items);
+  table.table.table-striped
+    thead
+      tr
+        th
+          span=__i('Quantity')
+        th
+          span=__i('Title')
+        th                 
+          span=__i('Price')
+    tbody
+      != partial('item', items);
 else
   p=__i('It looks like you have no products!')

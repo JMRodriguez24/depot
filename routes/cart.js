@@ -14,20 +14,24 @@ module.exports = function (app, models) {
 
             if (!err) {
                 for (i = 0; i < req.session.cartItems.length; i++) {
-                    if (req.session.cartItems[i].product._id == product._id) {
-                        req.session.cartItems[i].count++; 
+                    if (req.session.cartItems[i]._id.toString() == product._id.toString()) {
+                        req.session.cartItems[i].count++;
                         exists = true;
+                        break;
                     } 
                 }
                 
-                
                 if (!exists) {
                     req.session.cartItems.push({
-                        count: 1,
-                        "product": product
+                        "count": 1,
+                        _id: product._id,
+                        description: product.description,
+                        image_url: product.image_url,
+                        price : product.price,
+                        title: product.title
                     });
                 }                  
-
+                
                 res.redirect('/cart');
             }
             else {

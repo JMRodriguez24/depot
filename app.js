@@ -27,6 +27,7 @@ app.configure('development', function () {
     redisClient = require("redis").createClient();
 });
 
+
 // Configuration
 app.configure(function () {
     app.set('views', __dirname + '/views');

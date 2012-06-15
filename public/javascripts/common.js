@@ -20,7 +20,7 @@ jQuery(function ($) {
                 return "Delete";
             }
         };
-
+        
         e.preventDefault();
 
         if ($(that).attr('data-confirm')) {
@@ -42,5 +42,8 @@ jQuery(function ($) {
             $('#accept').click(createFormAndSubmit);
             $('#myModal').modal();
         }
+        else {
+            createFormAndSubmit();    
+        }   
     });
 });
